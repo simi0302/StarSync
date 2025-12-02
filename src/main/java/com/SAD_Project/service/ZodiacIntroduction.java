@@ -1,40 +1,29 @@
-// 這個類別放在 service 套件裡面
 package com.SAD_Project.service;
 
-// Spring 的服務註解
-import org.springframework.stereotype.Service;
-// HashMap 用來存鍵值對
+import org.springframework.stereotype.Service; // Spring 的服務註解
+
 import java.util.HashMap;
-// Map 介面
 import java.util.Map;
-// 星座介紹的資料，從1214.org來的
-// 這個類別負責儲存和提供星座介紹、個性分析等資料
+
+// 這個class負責儲存和提供星座介紹、個性分析等資料(1214.org)
 @Service
 public class ZodiacIntroduction {
     
-    // 存每個星座的基本介紹資料
-    // key 是星座名稱，value 是介紹文字
-    private Map<String, String> zodiacInfo;
-    // 性別個性資料
-    // 第一層 key 是星座名稱，第二層 key 是性別（"男"或"女"），value 是個性分析文字
-    private Map<String, Map<String, String>> genderPersonalityData;
+
+    private Map<String, String> zodiacInfo; // 存每個星座的基本介紹資料, key 是星座名稱 value 是介紹文字
+    private Map<String, Map<String, String>> genderPersonalityData; // 性別個性資料, 第一層 key 是星座名稱,第二層 key 是性別 value 是個性分析文字
     
     // 建構子，建立物件時會初始化所有資料
     public ZodiacIntroduction() {
-        // 初始化星座基本介紹
         initializeZodiacInfo();
-        // 初始化性別個性資料
         setGenderPersonality();
     }
-    
-    // 初始化星座基本資料
-    // 這個方法會建立所有星座的基本介紹資料
+
+    // 建立所有星座的基本介紹資料
     private void initializeZodiacInfo() {
-        // 建立新的 HashMap
         zodiacInfo = new HashMap<>();
-        
-        // 下面開始設定每個星座的介紹資料
-        // 每個星座包含：日期範圍、配對星座、不適合的星座
+
+        // 設定每個星座的介紹資料：日期範圍、配對星座、不適合的星座
         zodiacInfo.put("牡羊座", 
             "牡羊座（3/21-4/19）\n" +
             "配對的星座：獅子、射手、牡羊\n" +
@@ -96,19 +85,13 @@ public class ZodiacIntroduction {
             "配對的星座：金牛、處女、天蠍\n" +
             "不適合的星座：雙子、獅子、牡羊");
     }
-    
-    // 初始化男生女生個性資料
+
     // 這個方法會建立所有星座的性別個性資料
-    // 每個星座都有男生和女生的個性分析
     private void setGenderPersonality() {
-        // 建立新的 HashMap
         genderPersonalityData = new HashMap<>();
-        
-        // 下面開始設定每個星座的個性資料
+
         // 每個星座會建立一個 Map，裡面存 "男" 和 "女" 的個性分析
-        
         // 牡羊座個性
-        // 先建立一個 Map 來存這個星座的性別個性資料
         Map<String, String> aries = new HashMap<>();
         aries.put("男", 
             "1、心直口快溢於言表：此人以某種思想注意事業為己任，往往義憤激於言表，竭力維護軟弱可欺之人。有時候會嘴巴比腦子快，多生事端，也是心事多多的星座。\n\n" +
@@ -132,12 +115,8 @@ public class ZodiacIntroduction {
             "8、自我為中心：說話做事過於自我，太把自己的想法做法當一回事，好像地球少了牡羊女還轉不下去了。\n\n" +
             "9、急躁缺耐性：火象星座的特點，有的時候聽別人講話只聽前半句，後半句都沒有耐心聽就以為了解了一切事情的真相，一意孤行，按自己認為的去做。暴跳如雷、火冒三丈是常有的情緒。\n\n" +
             "10、坦白：牡羊女表達感情直截了當，不夠婉轉，但絕不拖泥帶水。天生不會阿諛奉承別人。能夠遇到真正的朋友。");
-        // 把牡羊座的個性資料存到 genderPersonalityData 裡面
         genderPersonalityData.put("牡羊座", aries);
-        
-        // 這裡先提供基本結構，可以後續擴展
-        // 下面每個星座的處理方式都一樣，先建立 Map，然後設定男女性別資料，最後存進去
-        
+
         // 金牛座個性
         Map<String, String> taurus = new HashMap<>();
         taurus.put("男", 
@@ -425,157 +404,97 @@ public class ZodiacIntroduction {
             "10、鑑賞力高：想像力豐富，藝術鑑賞天賦和欣賞天賦很高。很多人能夠通過音樂看到美麗的畫面。");
         genderPersonalityData.put("雙魚座", pisces);
     }
-    
-    // 根據日期和性別拿個性分析
-    // dateStr 是生日字串，gender 是性別
-    // 這個方法會先根據日期算出星座，然後取得個性分析
+
+    // 根據日期性別算出星座, 取得個性分析
     public String getPersonalityByDate(String dateStr, String gender) {
-        // 先根據日期計算星座
         String zodiac = com.SAD_Project.util.ZodiacCalculator.calculateZodiacFromString(dateStr);
-        // 如果計算失敗或結果是 "未知"，就回傳錯誤訊息
+
         if (zodiac == null || zodiac.equals("未知")) {
             return "錯誤：無法解析日期「" + dateStr + "」，請確認日期格式正確（例如：3/21 或 2024-03-21）。\n";
         }
-        
-        // 如果成功算出星座，就根據星座和性別取得個性分析
+
         return getPersonalityByZodiac(zodiac, gender);
     }
     
-    // 根據星座和性別拿個性分析
-    // zodiac 是星座名稱，gender 是性別
-    // 這個方法會取得完整的個性分析文字
+
+    // 取得完整的個性分析文字
     public String getPersonalityByZodiac(String zodiac, String gender) {
-        // 統一性別格式
-        // 把各種可能的性別輸入（如 "M"、"F"、"male" 等）轉成標準格式（"男"或"女"）
-        String normalizedGender = standardizeGender(gender);
-        // 如果轉換失敗就回傳錯誤訊息
-        if (normalizedGender == null) {
+
+        if (gender == null) {
             return "錯誤：性別必須是「男」或「女」。\n";
         }
-        
-        // 統一星座名稱
+
         String standardizedZodiac = standardizeZodiacName(zodiac);
-        
-        // 從資料庫取得這個星座的個性資料
-        Map<String, String> zodiacPersonality = genderPersonalityData.get(standardizedZodiac);
-        // 如果找不到這個星座的資料就回傳錯誤
+
+        Map<String, String> zodiacPersonality = genderPersonalityData.get(standardizedZodiac); // 從資料庫取得這個星座的個性資料
         if (zodiacPersonality == null) {
             return "抱歉，找不到「" + zodiac + "」的個性資料。\n";
         }
-        
-        // 從這個星座的資料中取得對應性別的個性分析
-        String personality = zodiacPersonality.get(normalizedGender);
-        // 如果找不到對應性別的資料就回傳錯誤
+
+        String personality = zodiacPersonality.get(gender); //取得對應性別的個性分析
         if (personality == null) {
-            return "抱歉，找不到「" + standardizedZodiac + "」「" + normalizedGender + "」的個性資料。\n";
+            return "抱歉，找不到「" + standardizedZodiac + "」「" + gender + "」的個性資料。\n";
         }
-        
-        // 拿基本資料
-        // 取得星座的基本介紹（日期範圍、配對星座等）
+
+        // 取得星座的基本介紹
         String basicInfo = zodiacInfo.get(standardizedZodiac);
         // 如果找不到基本資料，就用星座名稱代替
         if (basicInfo == null) {
             basicInfo = standardizedZodiac;
         }
-        
-        // 組裝輸出
+
         // 使用 StringBuilder 來組合最終的輸出文字
         StringBuilder output = new StringBuilder();
-        // 加上分隔線
         output.append("=".repeat(50)).append("\n");
-        // 加上標題
-        output.append(standardizedZodiac).append(" ").append(normalizedGender).append("生個性分析\n");
-        // 加上資料來源
+        output.append(standardizedZodiac).append(" ").append(gender).append("生個性分析\n");
         output.append("資料來源：https://1214.org/\n");
-        // 再加上分隔線
         output.append("=".repeat(50)).append("\n");
-        // 加上基本資料
         output.append(basicInfo).append("\n\n");
-        // 加上個性分析
         output.append(personality).append("\n");
-        // 最後加上分隔線
         output.append("=".repeat(50)).append("\n");
-        
-        // 回傳組合好的文字
+
         return output.toString();
     }
     
-    // 統一性別格式
-    // 把各種可能的性別輸入轉成標準格式（"男"或"女"）
-    // gender 是要轉換的性別字串
-    private String standardizeGender(String gender) {
-        // 如果是 null 就回傳 null
-        if (gender == null) {
-            return null;
-        }
-        //String g = gender.trim();
-        // 檢查是否是男性的各種寫法
-        if (gender.equals("男") || gender.equals("M") || gender.equals("m") || gender.equals("male") || gender.equals("Male")) {
-            return "男";
-        }
-        // 檢查是否是女性的各種寫法
-        if (gender.equals("女") || gender.equals("F") || gender.equals("f") || gender.equals("female") || gender.equals("Female")) {
-            return "女";
-        }
-        // 如果都不符合就回傳 null
-        return null;
-    }
-    
     // 統一星座名稱
-    // zodiac 是要轉換的星座名稱
     private String standardizeZodiacName(String zodiac) {
-        // 如果是 null 就回傳 null
         if (zodiac == null) return null;
-        // 先去掉前後空白
         String z = zodiac.trim();
-        // 處理摩羯座的特殊情況（有人寫 "摩羯"，有人寫 "魔羯"）
         if (z.contains("摩羯") || z.contains("魔羯")) {
             return "魔羯座";
         }
-        // 處理牡羊座的特殊情況（有人寫 "牡羊"，有人寫 "白羊"）
         if (z.contains("牡羊") || z.contains("白羊")) {
             return "牡羊座";
         }
-        // 如果名稱後面沒有 "座" 字，就加上去
         if (!z.endsWith("座")) {
             z = z + "座";
         }
-        // 回傳標準化的星座名稱
+
         return z;
     }
-    
-    // 拿星座介紹
-    // 這個方法會取得星座的完整介紹，包含基本資料、男生個性、女生個性
-    // zodiac 是星座名稱
+
+    // 取得星座的完整介紹
     public String getIntroduction(String zodiac) {
-        // 取得星座的基本介紹資料
         String info = zodiacInfo.get(zodiac);
-        // 取得星座的性別個性資料
+
         Map<String, String> personalities = genderPersonalityData.get(zodiac);
 
-        // 取得男生個性資料
         String male;
-        // 如果個性資料存在，就取得男生的部分
         if(personalities != null) {
             male = personalities.get("男");
         }
         else {
-            // 如果不存在就設為空字串
             male = "";
         }
 
-        // 取得女生個性資料
         String female;
-        // 如果個性資料存在，就取得女生的部分
         if(personalities != null) {
             female = personalities.get("女");
         }
         else {
-            // 如果不存在就設為空字串
             female = "";
         }
 
-        // 如果基本介紹不存在，就設定錯誤訊息
         if (info == null) {
             info = "抱歉，找不到 " + zodiac + " 的介紹資訊。";
         }
@@ -583,12 +502,9 @@ public class ZodiacIntroduction {
         // 這樣前端可以方便地分開顯示
         return String.join("===DELIM===", info, male, female);
     }
-    
-    // 取得所有星座名稱
-    // 這個方法會回傳所有星座名稱的陣列
-    // 可以用來顯示星座列表給使用者選擇
+
+    // 回傳所有星座名稱的陣列
     public String[] getAllZodiacNames() {
-        // 從 zodiacInfo 的 key 集合轉成陣列
-        return zodiacInfo.keySet().toArray(new String[0]);
+        return zodiacInfo.keySet().toArray(new String[0]); // 從 zodiacInfo 的 key 集合轉成陣列
     }
 }
