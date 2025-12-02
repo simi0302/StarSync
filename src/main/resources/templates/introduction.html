@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星座介紹 - StarSync</title>
+    <link rel="stylesheet" href="/css/style.css?v=4" th:href="@{/css/style.css(v=4)}">
+</head>
+<body>
+    <header class="starsync-header introduction-header">
+        <a class="back-button" href="/" th:href="@{/}">← 返回首頁</a>
+        <div class="stars-container">
+            <div class="star star-small"></div>
+            <div class="star star-medium"></div>
+            <div class="star star-large"></div>
+            <div class="star star-small"></div>
+            <div class="star star-medium"></div>
+            <div class="star star-small"></div>
+            <div class="star star-large"></div>
+            <div class="star star-small"></div>
+            <div class="star star-medium"></div>
+            <div class="star star-small"></div>
+        </div>
+        <div class="header-content">
+            <h1 class="starsync-logo">StarSync</h1>
+            <p class="starsync-tagline">Find your destiny.upon the star</p>
+        </div>
+    </header>
+
+    <main class="introduction-main">
+        <section class="zodiac-gallery">
+            <div class="zodiac-grid">
+                <button
+                    class="zodiac-card"
+                    th:each="zodiac : ${zodiacs}"
+                    th:text="${zodiac}"
+                    th:data-zodiac="${zodiac}">
+                </button>
+            </div>
+        </section>
+
+        <section id="result" class="introduction-detail" data-empty>
+            <div class="detail-placeholder">
+                <h3>請選擇一個星座</h3>
+                <p>點擊上方星座卡片即可顯示詳細介紹與建議配對。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="starsync-footer">
+        <p>資料來源：<a href="https://1214.org/" target="_blank">1214.org</a></p>
+    </footer>
+
+    <script th:src="@{/js/introduction.js}"></script>
+</body>
+</html>
+

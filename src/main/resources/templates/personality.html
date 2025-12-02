@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個性分析 - 星座配對系統</title>
+    <link rel="stylesheet" href="/css/style.css?v=3" th:href="@{/css/style.css(v=3)}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✨ 根據日期查看個性分析</h1>
+            <a href="/" class="back-link">← 返回首頁</a>
+        </header>
+
+        <div class="form-container">
+            <form id="personalityForm">
+                <div class="form-group">
+                    <label>生日日期</label>
+                    <input type="text" id="date" placeholder="例如：3/21 或 2024-03-21" class="form-input" required>
+                    <small class="form-hint">支援格式：MM/dd 或 yyyy-MM-dd</small>
+                </div>
+
+                <div class="form-group">
+                    <label>性別</label>
+                    <select id="gender" class="form-select" required>
+                        <option value="">請選擇性別</option>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary">查看個性分析</button>
+            </form>
+
+            <div id="result" class="result-container" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/personality.js}"></script>
+</body>
+</html>
+

@@ -1,0 +1,993 @@
+/* StarSync Design - 基本樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft JhengHei', 'Noto Sans TC', 'PingFang TC', Arial, sans-serif;
+    background: #ffffff; /* 白色背景 */
+    min-height: 100vh;
+    color: #333333; /* 深色文字 */
+    overflow-x: hidden;
+}
+
+/* ========== Header Section ========== */
+.starsync-header {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(180deg, #1e3a5f 0%, #2d4a6e 50%, #3d5a7e 100%); /* 更明顯的漸層藍色 */
+    padding: 80px 20px 60px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: white;
+    text-decoration: none;
+    font-size: 0.95em;
+    letter-spacing: 1px;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(6px);
+    z-index: 2;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.stars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
+
+.star-small {
+    width: 2px;
+    height: 2px;
+    opacity: 0.6;
+}
+
+.star-medium {
+    width: 3px;
+    height: 3px;
+    opacity: 0.8;
+}
+
+.star-large {
+    width: 4px;
+    height: 4px;
+    opacity: 1;
+}
+
+/* 星星位置（隨機分佈） */
+.star:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.star:nth-child(2) { top: 30%; left: 25%; animation-delay: 0.5s; }
+.star:nth-child(3) { top: 15%; left: 40%; animation-delay: 1s; }
+.star:nth-child(4) { top: 25%; left: 55%; animation-delay: 1.5s; }
+.star:nth-child(5) { top: 35%; left: 70%; animation-delay: 2s; }
+.star:nth-child(6) { top: 20%; left: 85%; animation-delay: 0.3s; }
+.star:nth-child(7) { top: 40%; left: 15%; animation-delay: 0.8s; }
+.star:nth-child(8) { top: 50%; left: 35%; animation-delay: 1.2s; }
+.star:nth-child(9) { top: 45%; left: 60%; animation-delay: 1.8s; }
+.star:nth-child(10) { top: 55%; left: 80%; animation-delay: 0.6s; }
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.starsync-logo {
+    font-size: 4.5em;
+    font-weight: 300;
+    letter-spacing: 8px;
+    color: white;
+    margin-bottom: 15px;
+    font-family: 'Georgia', 'Times New Roman', 'Times', serif; /* 優雅的 serif 字體 */
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.starsync-tagline {
+    font-size: 1.1em;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-style: italic;
+}
+
+.introduction-header {
+    min-height: 260px;
+}
+
+/* ========== Main Content Section ========== */
+.starsync-main {
+    background: #ffffff; /* 白色背景 */
+    min-height: calc(100vh - 300px);
+    padding: 60px 40px;
+}
+
+.match-main {
+    margin-top: -40px;
+    padding: 80px clamp(24px, 4vw, 60px) 60px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background: #f6f8ff;
+    box-shadow: 0 -20px 50px rgba(10, 24, 54, 0.2);
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cards-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+    align-items: stretch;
+}
+
+/* ========== Feature Cards ========== */
+.feature-card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(30, 58, 95, 0.85) 0%, rgba(45, 74, 110, 0.85) 50%, rgba(61, 90, 126, 0.85) 100%); /* 更明顯的半透明漸層藍色 */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* 更明顯的邊框 */
+    border-radius: 20px;
+    padding: 50px 40px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    overflow: hidden;
+    backdrop-filter: blur(10px); /* 毛玻璃效果 */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* 添加陰影讓卡片更明顯 */
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, rgba(45, 74, 110, 0.95) 0%, rgba(61, 90, 126, 0.95) 100%); /* 懸停時稍微亮一點 */
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+}
+
+.card-title-en {
+    font-size: 2.2em;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    font-family: 'Georgia', 'Times New Roman', 'Times', serif; /* 優雅的 serif 字體 */
+}
+
+.card-title-cn {
+    font-size: 1.5em;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 0;
+    letter-spacing: 2px;
+}
+
+/* ========== Constellation SVG ========== */
+.constellation {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 200px;
+    height: 200px;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.constellation-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ========== Footer ========== */
+.starsync-footer {
+    background: linear-gradient(180deg, #1e3a5f 0%, #2d4a6e 50%, #3d5a7e 100%); /* 保持深藍色漸層 */
+    padding: 30px 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.starsync-footer a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.starsync-footer a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* 1. 日期輸入容器樣式 (讓月、斜線、日排成一列) */
+.date-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+/* 2. 日期部分輸入框樣式 */
+.match-input.date-part {
+    width: 45%; /* 讓月和日各佔一半寬度 */
+    text-align: center;
+    padding: 18px 10px; /* 調整內距 */
+}
+
+/* 3. 中間固定的斜線樣式 */
+.date-separator {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.5em;
+    font-weight: 300;
+    font-family: 'Georgia', serif;
+    user-select: none; /* 防止使用者選取到斜線 */
+}
+
+/* 4. 移除數字輸入框的上下箭頭 (Spin Buttons) */
+/* 針對 Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* ========== Introduction Page ========== */
+.introduction-main {
+    background: #ffffff;
+    padding: 40px clamp(20px, 4vw, 60px) 60px;
+    max-width: 1100px;
+    margin: -40px auto 40px;
+    position: relative;
+    z-index: 2;
+    border-radius: 32px;
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.12);
+}
+
+.zodiac-gallery {
+    margin-bottom: 40px;
+}
+
+.zodiac-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(120px, 1fr));
+    gap: clamp(16px, 2vw, 28px);
+    justify-items: center;
+}
+
+.zodiac-card {
+    border: none;
+    border-radius: 40px;
+    width: 160px;
+    height: 90px;
+    font-size: 1rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(26, 43, 74, 0.9) 0%, rgba(45, 74, 110, 0.9) 100%);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+    letter-spacing: 1px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.zodiac-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.zodiac-card.active {
+    background: linear-gradient(135deg, rgba(135, 152, 210, 0.95) 0%, rgba(166, 180, 224, 0.95) 100%);
+    box-shadow: 0 12px 28px rgba(82, 103, 150, 0.35);
+}
+
+.introduction-detail {
+    background: white;
+    border-radius: 26px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(13, 21, 46, 0.12);
+    min-height: 260px;
+    border: 1px solid rgba(30, 58, 95, 0.1);
+}
+
+.introduction-detail[data-empty] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #5a6b92;
+}
+
+.detail-placeholder h3 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.detail-content h3 {
+    font-size: 2rem;
+    color: #1e3a5f;
+    margin-bottom: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.detail-content .detail-body {
+    white-space: pre-line;
+    line-height: 1.8;
+    margin-top: 20px;
+    color: #2d3a57;
+    font-family: 'Microsoft JhengHei', 'Noto Sans TC', Arial, sans-serif;
+}
+
+.detail-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: #3b4c73;
+}
+
+.detail-meta span {
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+}
+
+.detail-section {
+    margin-top: 30px;
+}
+
+.detail-section h4 {
+    font-size: 1.5rem;
+    color: #1e3a5f;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.detail-personality {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.detail-personality h4 {
+    font-size: 1.5rem;
+    color: #1e3a5f;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .introduction-detail {
+        padding: 28px 20px;
+    }
+
+    .zodiac-grid {
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+    }
+    
+    .detail-section h4,
+    .detail-personality h4 {
+        font-size: 1.3rem;
+        margin-top: 25px;
+    }
+    
+    .detail-personality {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+
+/* ========== Match Page Styles ========== */
+.match-form {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.match-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.match-panel {
+    background: linear-gradient(135deg, rgba(26, 43, 74, 0.9) 0%, rgba(45, 74, 110, 0.9) 100%); /* 半透明漸層藍色 */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 40px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+}
+
+.panel-title {
+    font-size: 1.8em;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: 'Georgia', 'Times New Roman', 'Times', serif; /* 優雅的 serif 字體 */
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.match-input {
+    width: 100%;
+    padding: 18px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+    transition: all 0.3s ease;
+    font-family: 'Microsoft JhengHei', 'Noto Sans TC', Arial, sans-serif;
+    backdrop-filter: blur(5px);
+}
+
+.match-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.match-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+.match-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='white' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    padding-right: 50px;
+}
+
+.match-select option {
+    background: #0a1929;
+    color: white;
+}
+
+.submit-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, rgba(26, 43, 74, 0.9) 0%, rgba(45, 74, 110, 0.9) 100%);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    padding: 18px 60px;
+    font-size: 1.2em;
+    font-weight: 300;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Georgia', 'Times New Roman', 'Times', serif; /* 優雅的 serif 字體 */
+    backdrop-filter: blur(10px);
+}
+
+.submit-btn:hover {
+    background: linear-gradient(135deg, rgba(61, 90, 126, 0.95) 0%, rgba(74, 107, 143, 0.95) 100%);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.match-result {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    background: #f2f5ff;
+    border-radius: 30px;
+    padding: 40px clamp(20px, 4vw, 60px);
+    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.15);
+}
+
+/* ========== Match Result Page Styles ========== */
+.match-result-page {
+    width: 100%;
+}
+
+.result-header {
+    margin-bottom: 30px;
+}
+
+.percentage-bar {
+    background: linear-gradient(135deg, rgba(26, 43, 74, 0.95) 0%, rgba(45, 74, 110, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 25px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.percentage-label {
+    font-size: 1.3em;
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-family: 'Georgia', 'Times New Roman', 'Times', serif; /* 優雅的 serif 字體 */
+}
+
+.stars-rating {
+    display: flex;
+    gap: 8px;
+    font-size: 1.8em;
+}
+
+.star-filled {
+    color: #FFD700; /* 金色 */
+}
+
+.star-outline {
+    color: #FFD700;
+    opacity: 0.3;
+}
+
+.result-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.result-section {
+    background: linear-gradient(135deg, rgba(26, 43, 74, 0.9) 0%, rgba(45, 74, 110, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    min-height: 200px;
+    backdrop-filter: blur(10px);
+}
+
+.section-title {
+    font-size: 1.4em;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-family: 'Georgia', 'Times New Roman', 'Times', serif; /* 優雅的 serif 字體 */
+    text-align: center;
+}
+
+.section-content {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    font-size: 1em;
+    font-family: 'Microsoft JhengHei', 'Noto Sans TC', Arial, sans-serif;
+}
+
+.section-comment {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, rgba(26, 43, 74, 0.9) 0%, rgba(45, 74, 110, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.result-footer {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, rgba(26, 43, 74, 0.9) 0%, rgba(45, 74, 110, 0.9) 100%);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    padding: 12px 30px;
+    font-size: 1em;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: 'Georgia', 'Times New Roman', 'Times', serif; /* 優雅的 serif 字體 */
+    backdrop-filter: blur(10px);
+}
+
+.home-btn:hover {
+    background: linear-gradient(135deg, rgba(61, 90, 126, 0.95) 0%, rgba(74, 107, 143, 0.95) 100%);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.15);
+}
+
+.home-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ========== 響應式設計 ========== */
+@media (max-width: 1024px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .feature-card {
+        min-height: 350px;
+    }
+    
+    .card-title-en {
+        font-size: 1.8em;
+    }
+    
+    .starsync-logo {
+        font-size: 3.5em;
+    }
+    
+    .match-panels {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .match-panel {
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .starsync-header {
+        padding: 60px 20px 40px;
+    }
+    
+    .starsync-logo {
+        font-size: 2.5em;
+        letter-spacing: 4px;
+    }
+    
+    .starsync-tagline {
+        font-size: 0.9em;
+    }
+    
+    .starsync-main {
+        padding: 40px 20px;
+    }
+    
+    .feature-card {
+        padding: 35px 25px;
+        min-height: 300px;
+    }
+    
+    .card-title-en {
+        font-size: 1.5em;
+    }
+    
+    .card-title-cn {
+        font-size: 1.2em;
+    }
+    
+    .constellation {
+        width: 150px;
+        height: 150px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .match-panels {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .match-panel {
+        padding: 30px 25px;
+        min-height: 300px;
+    }
+    
+    .panel-title {
+        font-size: 1.5em;
+        margin-bottom: 25px;
+    }
+    
+    .match-input {
+        padding: 15px;
+        font-size: 1.1em;
+    }
+    
+    .submit-btn {
+        padding: 15px 40px;
+        font-size: 1em;
+    }
+    
+    .match-result {
+        padding: 0;
+    }
+    
+    .percentage-bar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    .percentage-label {
+        font-size: 1.1em;
+    }
+    
+    .stars-rating {
+        font-size: 1.5em;
+    }
+    
+    .result-sections {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .result-section {
+        padding: 25px 20px;
+        min-height: 150px;
+    }
+    
+    .section-title {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+    }
+    
+    .section-content {
+        font-size: 0.9em;
+    }
+}
+
+/* ========== 保留其他頁面的樣式 ========== */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    padding: 40px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+header h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-family: 'Georgia', 'Times New Roman', 'Times', serif; /* 優雅的 serif 字體 */
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.2em;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #667eea;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* 導航選單 */
+.main-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.nav-item {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.nav-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.nav-item h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.nav-item p {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* 表單樣式 */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus,
+.form-select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-hint {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+    font-size: 0.85em;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* 結果顯示 */
+.result-container {
+    margin-top: 30px;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.result-container pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Microsoft JhengHei', '標楷體', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 星座列表 */
+.zodiac-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.zodiac-item {
+    padding: 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: bold;
+    color: #333;
+}
+
+.zodiac-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+    color: #666;
+}
+
+footer a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

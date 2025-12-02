@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horoscope Match Compatibility - StarSync</title>
+    <link rel="stylesheet" href="/css/style.css?v=6" th:href="@{/css/style.css(v=6)}">
+</head>
+<body>
+<header class="starsync-header">
+    <a class="back-button" href="/" th:href="@{/}">← 返回首頁</a>
+    <div class="stars-container">
+        <div class="star star-small"></div>
+        <div class="star star-medium"></div>
+        <div class="star star-large"></div>
+        <div class="star star-small"></div>
+        <div class="star star-medium"></div>
+    </div>
+    <div class="header-content">
+        <h1 class="starsync-logo">StarSync</h1>
+        <p class="starsync-tagline">Find your destiny.upon the star</p>
+    </div>
+</header>
+
+<main class="starsync-main match-main">
+    <form id="matchForm" class="match-form">
+        <div class="match-panels">
+            <div class="match-panel panel-yours">
+                <h2 class="panel-title">Yours 你的資料</h2>
+                <div class="input-group">
+                    <label style="color:white; display:block; margin-bottom:10px;">生日 (月 / 日)</label>
+                    <div class="date-input-container">
+                        <input type="number" id="yourMonth" class="match-input date-part" placeholder="MM" min="1" max="12" required>
+                        <span class="date-separator">/</span>
+                        <input type="number" id="yourDay" class="match-input date-part" placeholder="DD" min="1" max="31" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <select id="yourGender" class="match-input match-select" required>
+                        <option value="">性別</option>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="match-panel panel-theirs">
+                <h2 class="panel-title">Theirs 對方資料</h2>
+                <div class="input-group">
+                    <label style="color:white; display:block; margin-bottom:10px;">生日 (月 / 日)</label>
+                    <div class="date-input-container">
+                        <input type="number" id="theirMonth" class="match-input date-part" placeholder="MM" min="1" max="12" required>
+                        <span class="date-separator">/</span>
+                        <input type="number" id="theirDay" class="match-input date-part" placeholder="DD" min="1" max="31" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <select id="theirGender" class="match-input match-select" required>
+                        <option value="">性別</option>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="submit-container">
+            <button type="submit" class="submit-btn">Submit 送出</button>
+        </div>
+    </form>
+
+    <div id="result" class="match-result" style="display: none;"></div>
+</main>
+
+<footer class="starsync-footer">
+    <p>資料來源：<a href="https://1214.org/" target="_blank">1214.org</a></p>
+</footer>
+
+<script th:src="@{/js/match.js}"></script>
+</body>
+</html>
+

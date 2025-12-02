@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarSync - Find your destiny upon the star</title>
+    <link rel="stylesheet" href="/css/style.css?v=3" th:href="@{/css/style.css(v=3)}">
+</head>
+<body>
+    <!-- Header Section with Starry Background -->
+    <header class="starsync-header">
+        <div class="stars-container">
+            <div class="star star-small"></div>
+            <div class="star star-medium"></div>
+            <div class="star star-large"></div>
+            <div class="star star-small"></div>
+            <div class="star star-medium"></div>
+            <div class="star star-small"></div>
+            <div class="star star-large"></div>
+            <div class="star star-small"></div>
+            <div class="star star-medium"></div>
+            <div class="star star-small"></div>
+        </div>
+        <div class="header-content">
+            <h1 class="starsync-logo">StarSync</h1>
+            <p class="starsync-tagline">Find your destiny.upon the star</p>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="starsync-main">
+        <div class="cards-container">
+            <!-- Left Card: Horoscope Match Compatibility -->
+            <a href="/match" class="feature-card card-left">
+                <div class="card-content">
+                    <h2 class="card-title-en">Horoscope Match Compatibility</h2>
+                    <h3 class="card-title-cn">星座配對查詢</h3>
+                </div>
+                <div class="constellation constellation-scorpio">
+                    <svg viewBox="0 0 200 200" class="constellation-svg">
+                        <!-- Scorpio constellation pattern -->
+                        <circle cx="50" cy="50" r="2" fill="white" opacity="0.8"/>
+                        <circle cx="80" cy="70" r="2" fill="white" opacity="0.8"/>
+                        <circle cx="110" cy="90" r="2" fill="white" opacity="0.8"/>
+                        <circle cx="140" cy="110" r="2" fill="white" opacity="0.8"/>
+                        <circle cx="150" cy="140" r="2" fill="white" opacity="0.8"/>
+                        <circle cx="130" cy="160" r="2" fill="white" opacity="0.8"/>
+                        <line x1="50" y1="50" x2="80" y2="70" stroke="white" stroke-width="1" opacity="0.5"/>
+                        <line x1="80" y1="70" x2="110" y2="90" stroke="white" stroke-width="1" opacity="0.5"/>
+                        <line x1="110" y1="90" x2="140" y2="110" stroke="white" stroke-width="1" opacity="0.5"/>
+                        <line x1="140" y1="110" x2="150" y2="140" stroke="white" stroke-width="1" opacity="0.5"/>
+                        <line x1="150" y1="140" x2="130" y2="160" stroke="white" stroke-width="1" opacity="0.5"/>
+                        <!-- Additional stars -->
+                        <circle cx="60" cy="30" r="1" fill="white" opacity="0.6"/>
+                        <circle cx="100" cy="50" r="1" fill="white" opacity="0.6"/>
+                        <circle cx="120" cy="120" r="1" fill="white" opacity="0.6"/>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Right Card: Horoscope Introduction -->
+            <a href="/introduction" class="feature-card card-right">
+                <div class="card-content">
+                    <h2 class="card-title-en">Horoscope Introduction</h2>
+                    <h3 class="card-title-cn">星座介紹</h3>
+                </div>
+                <div class="constellation constellation-sagittarius">
+                    <svg viewBox="0 0 200 200" class="constellation-svg">
+                        <!-- Sagittarius constellation pattern -->
+                        <circle cx="60" cy="80" r="2" fill="white" opacity="0.8"/>
+                        <circle cx="90" cy="100" r="2" fill="white" opacity="0.8"/>
+                        <circle cx="120" cy="120" r="2" fill="white" opacity="0.8"/>
+                        <circle cx="140" cy="140" r="2" fill="white" opacity="0.8"/>
+                        <circle cx="110" cy="160" r="2" fill="white" opacity="0.8"/>
+                        <line x1="60" y1="80" x2="90" y2="100" stroke="white" stroke-width="1" opacity="0.5"/>
+                        <line x1="90" y1="100" x2="120" y2="120" stroke="white" stroke-width="1" opacity="0.5"/>
+                        <line x1="120" y1="120" x2="140" y2="140" stroke="white" stroke-width="1" opacity="0.5"/>
+                        <line x1="140" y1="140" x2="110" y2="160" stroke="white" stroke-width="1" opacity="0.5"/>
+                        <!-- Additional stars -->
+                        <circle cx="70" cy="60" r="1" fill="white" opacity="0.6"/>
+                        <circle cx="100" cy="80" r="1" fill="white" opacity="0.6"/>
+                        <circle cx="130" cy="100" r="1" fill="white" opacity="0.6"/>
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer class="starsync-footer">
+        <p>資料來源：<a href="https://1214.org/" target="_blank">1214.org</a></p>
+    </footer>
+</body>
+</html>
+
