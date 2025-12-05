@@ -54,7 +54,7 @@ public class MatchRuleEngine {
             return null;
         }
 
-        return ZodiacCalculator.calculateZodiacFromString(birthDate); // 使用工具類別來計算星座
+        return ZodiacCalculator.calculateZodiacFromBirthDate(birthDate); // 使用工具類別來計算星座
     }
 
     // 算配對結果

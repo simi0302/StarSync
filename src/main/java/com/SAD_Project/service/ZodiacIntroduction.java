@@ -407,7 +407,7 @@ public class ZodiacIntroduction {
 
     // 根據日期性別算出星座, 取得個性分析
     public String getPersonalityByDate(String dateStr, String gender) {
-        String zodiac = com.SAD_Project.util.ZodiacCalculator.calculateZodiacFromString(dateStr);
+        String zodiac = com.SAD_Project.util.ZodiacCalculator.calculateZodiacFromBirthDate(dateStr);
 
         if (zodiac == null || zodiac.equals("未知")) {
             return "錯誤：無法解析日期「" + dateStr + "」，請確認日期格式正確（例如：3/21 或 2024-03-21）。\n";

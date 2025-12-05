@@ -126,7 +126,7 @@ public class HoroscopeController {
 
         try {
             String personality = zodiacIntro.getPersonalityByDate(date, gender); // 根據日期和性別取得個性分析文字
-            String zodiac = ZodiacCalculator.calculateZodiacFromString(date);  // 根據日期計算出星座
+            String zodiac = ZodiacCalculator.calculateZodiacFromBirthDate(date);  // 根據日期計算出星座
 
             //若成功就設定成功標記和相關資料
             response.put("success", true);

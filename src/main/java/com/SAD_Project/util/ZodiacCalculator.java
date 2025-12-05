@@ -5,7 +5,7 @@ public class ZodiacCalculator {
 
     // 從字串算星座，包含解析日期與判斷星座的所有邏輯
     // 這個是靜態方法，可以直接用類別名稱呼叫，不需要建立物件
-    public static String calculateZodiacFromString(String birthDate) {
+    public static String calculateZodiacFromBirthDate(String birthDate) {
         int month;
         int day;
 

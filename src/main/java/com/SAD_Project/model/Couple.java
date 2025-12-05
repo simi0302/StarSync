@@ -64,7 +64,7 @@ public class Couple {
             return null;
         }
 
-        return ZodiacCalculator.calculateZodiacFromString(birthDate); // 使用工具類別來計算星座
+        return ZodiacCalculator.calculateZodiacFromBirthDate(birthDate); // 使用工具類別來計算星座
     }
 
     // 檢查字串value是否為空白
