@@ -17,6 +17,11 @@ document.getElementById('matchForm').addEventListener('submit', async function(e
         return;
     }
 
+    if (yourGender === theirGender) {
+        alert("目前僅支援一男一女分析，請選擇不同性別！");
+        return;
+    }
+
     // 時間驗證邏輯
     if (!isValidDate(yourMonth, yourDay)) {
         alert(`你的生日日期不正確：${yourMonth}月${yourDay}日`);
